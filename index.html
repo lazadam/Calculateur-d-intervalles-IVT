@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur d'Intervalles d'Injections Intravitréennes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculateur d'Intervalles d'Injections</h1>
+        <p class="subtitle">Pour les injections intravitréennes</p>
+
+        <div class="tabs-container">
+            <!-- Onglets de navigation -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="calculator">Calculateur</button>
+                <button class="tab-btn" data-tab="diseases">Maladies</button>
+                <button class="tab-btn" data-tab="molecules">Molécules</button>
+            </div>
+
+            <!-- Contenu des onglets -->
+            <div class="tabs-content">
+                <!-- Onglet Calculateur -->
+                <div class="tab-pane active" id="calculator">
+                    <div class="calculator">
+                        <div class="input-group">
+                            <label for="lastInjection">Date de la dernière injection :</label>
+                            <input type="date" id="lastInjection" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="nextInjection">Date de la prochaine injection :</label>
+                            <input type="date" id="nextInjection" required>
+                        </div>
+
+                        <button onclick="calculateInterval()" class="calculate-btn">Calculer l'intervalle</button>
+
+                        <div id="result" class="result">
+                            <p>L'intervalle entre les injections sera affiché ici</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Maladies -->
+                <div class="tab-pane" id="diseases">
+                    <div class="disease-cards">
+                        <div class="disease-card">
+                            <h3>Œdème Maculaire Diabétique (OMD)</h3>
+                            <div class="disease-content">
+                                <h4>Recommandations :</h4>
+                                <ul>
+                                    <li>Phase d'induction : 5 injections mensuelles</li>
+                                    <li>Phase de maintenance : adaptation selon la réponse</li>
+                                    <li>Intervalle typique : 4-8 semaines</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="disease-card">
+                            <h3>Occlusion Veineuse Rétinienne (OVR)</h3>
+                            <div class="disease-content">
+                                <h4>Recommandations :</h4>
+                                <ul>
+                                    <li>Phase initiale : 6 injections mensuelles</li>
+                                    <li>Suivi : adaptation selon l'évolution</li>
+                                    <li>Intervalle typique : 4-8 semaines</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="disease-card">
+                            <h3>DMLA (Dégénérescence Maculaire Liée à l'Âge)</h3>
+                            <div class="disease-content">
+                                <h4>Recommandations :</h4>
+                                <ul>
+                                    <li>Phase d'induction : 3 injections mensuelles</li>
+                                    <li>Phase de maintenance : adaptation selon la réponse</li>
+                                    <li>Intervalle typique : 4-12 semaines</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="disease-card">
+                            <h3>Néovaisseaux du Myope Fort</h3>
+                            <div class="disease-content">
+                                <h4>Recommandations :</h4>
+                                <ul>
+                                    <li>Phase initiale : 3 injections mensuelles</li>
+                                    <li>Suivi : adaptation selon l'évolution</li>
+                                    <li>Intervalle typique : 4-8 semaines</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Molécules -->
+                <div class="tab-pane" id="molecules">
+                    <div class="molecule-cards">
+                        <div class="molecule-card">
+                            <h3>LUCENTIS (Ranibizumab)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 0.5 mg</p>
+                                <p><strong>Volume :</strong> 0.05 ml</p>
+                                <p><strong>Indications :</strong> DMLA, OMD, OVR</p>
+                            </div>
+                        </div>
+
+                        <div class="molecule-card">
+                            <h3>EYLEA (Aflibercept)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 2 mg</p>
+                                <p><strong>Volume :</strong> 0.05 ml</p>
+                                <p><strong>Indications :</strong> DMLA, OMD, OVR</p>
+                            </div>
+                        </div>
+
+                        <div class="molecule-card">
+                            <h3>EYLEA 8mg (Aflibercept)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 8 mg</p>
+                                <p><strong>Volume :</strong> 0.07 ml</p>
+                                <p><strong>Indications :</strong> DMLA</p>
+                            </div>
+                        </div>
+
+                        <div class="molecule-card">
+                            <h3>VABYSMO (Faricimab)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 6 mg</p>
+                                <p><strong>Volume :</strong> 0.05 ml</p>
+                                <p><strong>Indications :</strong> DMLA, OMD</p>
+                            </div>
+                        </div>
+
+                        <div class="molecule-card">
+                            <h3>BEOVU (Brolucizumab)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 6 mg</p>
+                                <p><strong>Volume :</strong> 0.05 ml</p>
+                                <p><strong>Indications :</strong> DMLA</p>
+                            </div>
+                        </div>
+
+                        <div class="molecule-card">
+                            <h3>OZURDEX (Dexaméthasone)</h3>
+                            <div class="molecule-content">
+                                <p><strong>Dosage :</strong> 0.7 mg</p>
+                                <p><strong>Volume :</strong> 0.05 ml</p>
+                                <p><strong>Indications :</strong> OVR, OMD</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour calculer l'intervalle
+        function calculateInterval() {
+            const lastInjection = new Date(document.getElementById('lastInjection').value);
+            const nextInjection = new Date(document.getElementById('nextInjection').value);
+            
+            if (isNaN(lastInjection.getTime()) || isNaN(nextInjection.getTime())) {
+                document.getElementById('result').innerHTML = '<p class="error">Veuillez sélectionner les deux dates</p>';
+                return;
+            }
+
+            const diffTime = Math.abs(nextInjection - lastInjection);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('result').innerHTML = `
+                <p class="success">Intervalle calculé : ${diffDays} jours</p>
+                <p class="info">(${Math.floor(diffDays/7)} semaines et ${diffDays%7} jours)</p>
+            `;
+        }
+
+        // Gestion des onglets
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons et panneaux
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
+                
+                // Afficher le panneau correspondant
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 
